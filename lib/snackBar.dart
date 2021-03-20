@@ -24,17 +24,44 @@ class MyPage extends StatelessWidget {
           centerTitle: true,
         ),
         body: Center(
-          child: OutlinedButton(
-            child: const Text('Show SnackBar'),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('A SnackBar has been shown.'),
-                ),
-              );
-            },
-            // style: ButtonStyle(backgroundColor: Color),
-          ),
+          // child: OutlinedButton(
+          //   child: const Text('Show SnackBar'),
+          //   onPressed: () {
+          //     ScaffoldMessenger.of(context).showSnackBar(
+          //       const SnackBar(
+          //         content: Text('A SnackBar has been shown.'),
+          //       ),
+          //     );
+          //   },
+          //   // style: ButtonStyle(backgroundColor: Color),
+          // ),
+          child: MySnackBar(),
         ));
+  }
+}
+
+class MySnackBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      // child: ElevatedButton(onPressed: () {}, child: Text('I gotta pee')),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'A SnackBar has been shown.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.teal,
+              duration: Duration(milliseconds: 1000),
+            ),
+          );
+        },
+        label: Text('Plus One'),
+        icon: Icon(Icons.plus_one),
+      ),
+    );
   }
 }
